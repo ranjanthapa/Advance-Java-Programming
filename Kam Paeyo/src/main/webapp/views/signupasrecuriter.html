@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | DrillTheWay</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<section class="navigation">
+    <ul>
+        <li>Home</li>
+        <li>Jobs</li>
+        <li><a href="login.html">Login</a></li>
+        <li class="register-dropdown">
+            <button class="register-btn">Register</button>
+            <div class="register-as">
+                <a href="">Register as Candidate</a>
+                <a href="signupasrecuriter.html">Register as Recruiter</a>
+            </div>
+        </li>
+    </ul>
+</section>
+<div class="container">
+    <div class="form-box">
+        <h2>Create an Account</h2>
+        <p>Sign up as a recruiter</p>
+        <form>
+            <label for="fullname">Company Name</label>
+            <input type="text" id="fullname" placeholder="Enter Company Name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="Enter Company Email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Create a password" required>
+
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+</div>
+</body>
+</html>
