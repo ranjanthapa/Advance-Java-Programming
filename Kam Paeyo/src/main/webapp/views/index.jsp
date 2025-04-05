@@ -2,22 +2,11 @@
 <html>
 <head>
     <title>Job Portal</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-   <section class="navigation">
-    <ul>
-        <li>Home</li>
-        <li>Jobs</li>
-        <li>Login</li>
-        <li class="register-dropdown">
-            <button class="register-btn">Register</button>
-            <div class="register-as">
-                <a href="#">Register as Candidate</a>
-                <a href="registerRecruiter.jsp">Register as Recruiter</a>
-            </div>
-        </li>
-    </ul>
-   </section>
+   <%@ include file="includes/navigation.jsp" %>
 </body>
+
 </html>

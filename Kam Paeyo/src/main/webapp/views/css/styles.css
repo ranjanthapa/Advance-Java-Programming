@@ -1,0 +1,207 @@
+* {
+  box-sizing: border-box;
+}
+
+/*----------------------------- Custom CSS Classes ---------------------------*/
+
+.font-bold {
+  font-weight: bold;
+}
+
+.text-justify-center {
+  text-align: center;
+  line-height: 1.5em;
+}
+
+.form-group{
+    display: flex;
+    gap: 5px;
+}
+
+/*----------------------------- Custom CSS IDs ---------------------------*/
+.password-container{
+display: flex;
+
+}
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#toggle-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  opacity: 0.5;
+  padding: 5px;
+}
+
+/*----------------------------- Global Styles ---------------------------*/
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+
+.navigation {
+  padding: 10px 0;
+  background-color: #dc3545;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li {
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+
+.register-btn {
+  padding: 10px 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  background-color: white;
+  color: #dc3545;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.register-btn:hover {
+  background-color: #ffc0cb;
+  color: #721c24;
+}
+
+.register-as-box {
+  display: none;
+  background-color: whitesmoke;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  min-width: 180px;
+}
+
+.register-as-box a {
+  display: block;
+  color: #333;
+  padding: 5px 0;
+}
+
+.container {
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 70%;
+}
+
+.form-box h2 {
+  margin: 0;
+}
+
+.form-box p {
+  font-size: 17px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/*----------------------------- Floating Label Input ---------------------------*/
+
+.input-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  background: white;
+}
+
+.input-container label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #999;
+  font-size: 16px;
+  pointer-events: none;
+  background: white;
+  padding: 0 4px;
+  transition: 0.3s ease all;
+}
+
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 10px;
+  font-size: 12px;
+  color: black;
+}
+
+.input-container input:focus {
+  border-color: black;
+}
+
+/*----------------------------- Buttons ---------------------------*/
+
+.btn {
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #c82333;
+}
+
