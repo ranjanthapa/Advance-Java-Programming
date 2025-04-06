@@ -33,19 +33,28 @@
                  <label for="email">Email</label>
             </div>
 
+            <div class="input-container">
+                 <input type="text" name="phoneNumber" placeholder=" " required>
+                 <label for="phoneNumber">Phone Number</label>
+            </div>
+
             <div class="form-group">
-            <div class="input-container password-container">
-                 <input type="password" name="password" placeholder="Password" required>
-                 <label for="password">Password</label>
+                <div class="input-container password-container">
+                     <input type="password" name="password" placeholder="Password" id="password" required>
+                     <label for="password">Password</label>
+                      <button type="button" onclick="toggleEyeButton(this, 'password')" id="toggle-btn" class="password-eye" style="display: none;">
+                        <i class="fa-solid fa-eye-slash"></i>
+                      </button>
+                </div>
 
-            </div>
-
-            <div class="input-container password-container">
-                 <input type="password" name="confirmPassword" placeholder="Password" required>
-                 <label for="confirmPassword">Confirm Password</label>
-
-            </div>
-
+                <div class="input-container password-container">
+                     <input type="password" name="confirmPassword" placeholder=" " id="confirmPassword"  required>
+                     <label for="confirmPassword">Confirm Password</label>
+                      <button type="button" onclick="toggleEyeButton(this, 'confirmPassword')" id="toggle-btn"
+                      class="confirm-password-eye" style="display: none;">
+                            <i class="fa-solid fa-eye-slash"></i>
+                      </button>
+                </div>
             </div>
             <button type="submit" class="btn">Sign Up</button>
         </form>
@@ -53,6 +62,31 @@
     </div>
 </div>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const passwordInput = document.getElementById("password");
+        const confirmInput = document.getElementById("confirmPassword");
+        const passwordEye = document.querySelector(".password-eye");
+        const confirmEye = document.querySelector(".confirm-password-eye");
 
+        function toggleVisibilityIcon(inputField, button) {
+            inputField.addEventListener('input', () => {
+            if (inputField.value) {
+              button.style.display = "inline-block";
+            } else {
+              button.style.display = "none";
+            }
+            });
+
+          if (inputField.value) {
+            button.style.display = "inline-block";
+          }
+        }
+
+        toggleVisibilityIcon(passwordInput, passwordEye);
+        toggleVisibilityIcon(confirmInput, confirmEye);
+      });
+
+</script>
 <script src="scripts/index.js"></script>
 </html>

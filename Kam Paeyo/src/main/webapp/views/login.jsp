@@ -36,21 +36,6 @@
     </div>
 </div>
 <script>
-    function toggleEyeButton(btn, fieldID) {
-        const inputField = document.getElementById(fieldID);
-        const icon = btn.querySelector("i");
-
-        if (inputField.type === 'password') {
-            inputField.type = 'text';
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        } else {
-            inputField.type = 'password';
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
-        }
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
         const passwordField = document.getElementById('password');
         const eyeButton = document.getElementById('toggle-btn');
@@ -66,6 +51,8 @@
         });
     });
 </script>
+
+<script src="scripts/index.js"></script>
 
 </body>
 </html>
