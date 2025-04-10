@@ -15,7 +15,7 @@
     <div class="form-box">
         <h2>Create an Account</h2>
         <p>Sign up as a Candidate</p>
-        <form action="register" method="post">
+        <form action="register" method="POST">
             <div class="form-group">
                 <div class="input-container">
                     <input type="text" name="firstName" placeholder=" " required>
@@ -56,7 +56,7 @@
                       </button>
                 </div>
             </div>
-            <button type="submit" class="btn">Sign Up</button>
+            <input type="submit" value="submit" class="btn"/>
         </form>
         <p>Already have an account? <a href="login.jsp">Login</a></p>
     </div>

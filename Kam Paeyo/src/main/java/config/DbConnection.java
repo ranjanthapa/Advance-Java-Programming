@@ -9,13 +9,13 @@ public class DbConnection {
     private static final String PASSWORD = "qwerty";
 
     public static Connection getConnection() {
-        Connection conn = null;
+        Connection connection = null;
         try {
-            conn = DriverManager.getConnection(URL, USER, PASSWORD);
             System.out.println("Database connected");
+            connection =  DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return conn;
+    return connection;
     }
 }

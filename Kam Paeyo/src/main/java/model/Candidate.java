@@ -17,13 +17,12 @@ public class Candidate {
     private final Timestamp createdAt;
 
     public Candidate(String firstName, String lastName, String email, String phoneNumber, String password) {
-        this.id = UUID.randomUUID().toString(); // Convert UUID to String
+        this.id = UUID.randomUUID().toString();
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-
         this.education = null;
         this.experience = null;
         this.website = null;
@@ -32,22 +31,7 @@ public class Candidate {
         this.createdAt = new Timestamp(System.currentTimeMillis());
     }
 
-    public Candidate(String firstName, String lastName, String email, String phoneNumber, String password,
-                     String education, String experience, String website, String location) {
-        this.id = UUID.randomUUID().toString();
-        this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.education = education;
-        this.experience = experience;
-        this.website = website;
-        this.location = location;
-        this.createdAt = new Timestamp(System.currentTimeMillis());
-    }
-
-    public String getId() { return id; } // Fixed return type
+    public String getId() { return id; }
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
