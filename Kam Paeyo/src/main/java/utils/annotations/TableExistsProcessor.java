@@ -14,7 +14,7 @@ public class TableExistsProcessor {
                 String tableName = annotation.tableName();
                 String createQuery = annotation.createQuery();
                 try(Connection conn = DbConnection.getConnection()){
-                    if(!DbUtils.checkTableExists(conn, tableName)){
+                    if(DbUtils.checkTableExists(conn, tableName)){
                         System.out.println("Table " + tableName + " does not exist.");
                         boolean isCreated = DbUtils.createTable(createQuery, conn);
                         if(isCreated){

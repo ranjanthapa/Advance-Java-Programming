@@ -1,24 +1,26 @@
 package utils;
 
-import config.DbConnection;
 import queries.GeneralQuery;
 
 import java.sql.*;
 
 public class DbUtils {
 
-    public static boolean checkTableExists(Connection conn, String tableName){
-        try (PreparedStatement stmt = conn.prepareStatement(GeneralQuery.TABLE_EXISTS)){
+    public static boolean checkTableExists(Connection conn, String tableName) {
+        System.out.println("Connection from function" + conn);
+        try (PreparedStatement stmt = conn.prepareStatement(GeneralQuery.TABLE_EXISTS)) {
             stmt.setString(1, tableName);
-            try(ResultSet result = stmt.executeQuery() ){
-                System.out.println(result);
+            try (ResultSet result = stmt.executeQuery()) {
+                System.out.println("Checking table exists in the db utils" + result);
+                System.out.println(result.next());
+                return result.next();
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
-        return true;
     }
+
 
     public static boolean createTable(String createTableQuery, Connection conn){
         try (Statement stmt = conn.createStatement() ){

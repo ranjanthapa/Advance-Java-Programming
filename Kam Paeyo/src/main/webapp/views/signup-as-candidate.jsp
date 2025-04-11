@@ -16,6 +16,7 @@
         <h2>Create an Account</h2>
         <p>Sign up as a Candidate</p>
         <form action="register" method="POST">
+        <input type="text" name="type" value="candidate" hidden/>
             <div class="form-group">
                 <div class="input-container">
                     <input type="text" name="firstName" placeholder=" " required>

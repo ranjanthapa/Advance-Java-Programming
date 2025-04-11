@@ -1,36 +1,34 @@
 package model;
 
+import java.sql.Timestamp;
 import java.util.Date;
+import java.util.UUID;
 
 public class Recruiter {
-    private int id;
+    private String id;
     private String email;
     private String password;
     private String firmName;
-    private String firmEmail;
     private String industry;
     private String website;
     private String location;
-    private String contactEmail;
-    private Date createdAt;
+    private final Timestamp createdAt;
 
-    public Recruiter(int id, String email, String password, String firmName,
-                     String firmEmail, String industry, String website,
-                     String location, String contactEmail, Date createdAt) {
-        this.id = id;
+
+    public Recruiter( String email, String password, String firmName,
+                      String industry, String website,
+                     String location) {
+        this.id = UUID.randomUUID().toString();
         this.email = email;
         this.password = password;
         this.firmName = firmName;
-        this.firmEmail = firmEmail;
         this.industry = industry;
         this.website = website;
         this.location = location;
-        this.contactEmail = contactEmail;
-        this.createdAt = createdAt;
+        this.createdAt = new Timestamp(System.currentTimeMillis());
     }
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public String getId() { return id; }
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
@@ -41,9 +39,6 @@ public class Recruiter {
     public String getFirmName() { return firmName; }
     public void setFirmName(String firmName) { this.firmName = firmName; }
 
-    public String getFirmEmail() { return firmEmail; }
-    public void setFirmEmail(String firmEmail) { this.firmEmail = firmEmail; }
-
     public String getIndustry() { return industry; }
     public void setIndustry(String industry) { this.industry = industry; }
 
@@ -53,11 +48,8 @@ public class Recruiter {
     public String getLocation() { return location; }
     public void setLocation(String location) { this.location = location; }
 
-    public String getContactEmail() { return contactEmail; }
-    public void setContactEmail(String contactEmail) { this.contactEmail = contactEmail; }
+    public Timestamp getCreatedAt() { return createdAt; }
 
-    public Date getCreatedAt() { return createdAt; }
-    public void setCreatedAt(Date createdAt) { this.createdAt = createdAt; }
 
     @Override
     public String toString() {

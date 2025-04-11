@@ -15,16 +15,34 @@
     <div class="form-box">
         <h2>Create an Account</h2>
         <p>Sign up as a recruiter</p>
-        <form>
+        <form method="post" action="register">
+        <input type="text" name="type" value="recruiter" hidden/>
 
             <div class="input-container">
-                <input type="text" name="fullname" placeholder=" " required>
+                <input type="text" name="firmName" placeholder=" " required>
                 <label for="firmName">Firm Name</label>
             </div>
 
+            <div class="form-group">
+                <div class="input-container">
+                    <input type="email" name="email" placeholder=" " required>
+                    <label for="email">Company Email</label>
+                </div>
+
+                <div class="input-container">
+                    <input type="text" name="location" placeholder=" " required>
+                     <label for="location">Location</label>
+                </div>
+            </div>
+
             <div class="input-container">
-                <input type="email" name="email" placeholder=" " required>
-                <label for="email">Company Email</label>
+                <input type="text" name="industry" placeholder=" " required>
+                 <label for="industry">Industry</label>
+            </div>
+
+            <div class="input-container">
+                <input type="text" name="websiteURL" placeholder=" " required>
+                 <label for="websiteURL">Website URL</label>
             </div>
 
             <div class="form-group">
