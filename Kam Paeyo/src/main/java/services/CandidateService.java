@@ -4,6 +4,7 @@ import config.DbConnection;
 import model.Candidate;
 import queries.CandidateQuery;
 import utils.DbUtils;
+import utils.UserUtils;
 
 import java.sql.*;
 
@@ -29,6 +30,22 @@ public static boolean register(Candidate candidate) {
         return false;
     }
 }
+
+    public static boolean login(String email, String password) {
+        try (Connection conn = DbConnection.getConnection()) {
+            ResultSet rs = UserUtils.checkCredential(conn, email, password);
+
+            if (rs != null && rs.next()) {
+                System.out.println("Login successful for user: " + rs.getString("email"));
+                return true;
+            } else {
+                System.out.println("Invalid email or password.");
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 }

@@ -1,5 +1,6 @@
 package utils;
 
+import model.Candidate;
 import queries.GeneralQuery;
 
 import java.sql.*;
@@ -21,7 +22,6 @@ public class DbUtils {
         }
     }
 
-
     public static boolean createTable(String createTableQuery, Connection conn){
         try (Statement stmt = conn.createStatement() ){
             stmt.executeUpdate(createTableQuery);
@@ -31,6 +31,8 @@ public class DbUtils {
             return false;
         }
     }
+
+
 
 
 }
