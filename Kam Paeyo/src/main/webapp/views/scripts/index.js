@@ -22,6 +22,19 @@ function toggleEyeButton(btn, fieldID) {
 }
 
 
+function closeForm() {
+  const contentToHide = document.querySelector(".apply-job-form");
+  if (contentToHide) {
+    contentToHide.style.display = "none";
+  }
+}
+
+function openForm(){
+    const contentToHide = document.querySelector(".apply-job-form");
+      if (contentToHide) {
+        contentToHide.style.display = "block";
+      }
+}
 
 // Wait for the DOM to fully load before attaching listeners
 document.addEventListener('DOMContentLoaded', () => {

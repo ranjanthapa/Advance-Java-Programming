@@ -23,6 +23,7 @@ public class LoginUserServlet extends HttpServlet {
 
         if (isLoggedIn) {
             req.getSession().setAttribute("email", email);
+            req.getSession().setAttribute("role", "candidate");
 
             resp.sendRedirect("index.jsp");
         } else {

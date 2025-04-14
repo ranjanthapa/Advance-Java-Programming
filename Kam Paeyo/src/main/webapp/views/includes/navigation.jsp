@@ -1,7 +1,7 @@
 <section class="navigation">
   <ul class="nav-list">
     <li><a href="index.jsp">Home</a></li>
-    <li><a href="jobs_listing.jsp">Jobs</a></li>
+    <li><a href="jobs.jsp">Jobs</a></li>
     <%
         String email = (String) session.getAttribute("email");
         if (email != null) {

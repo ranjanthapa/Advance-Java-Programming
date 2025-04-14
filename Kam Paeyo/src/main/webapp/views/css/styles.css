@@ -22,6 +22,12 @@
 h3{
     margin:0;
 }
+
+.text{
+    padding-right: 20px;
+    border-right: 1px solid #ccc;
+}
+
 /*----------------------------- Custom CSS IDs ---------------------------*/
 .password-container{
 display: flex;
@@ -53,7 +59,7 @@ body {
   padding: 0;
   font-size: 16px;
   background: #f5f5f5;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .navigation {
@@ -118,23 +124,43 @@ a {
 }
 
 .container {
-  background-color: whitesmoke;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap:20px;
   height: 100vh;
+  background: white;
 }
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+    max-height: 100%;
+    padding: 40px 20px;
+  }
+   .container img {
+      max-width: 60%;
+      height: auto;
+
+    }
+    .form-box{
+        width: auto;
+        min-width: 500px;
+    }
+
+  }
+
 
 .form-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
-  width: auto;
+ height:auto;
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
   max-width: 70%;
 }
 
@@ -159,7 +185,7 @@ form {
   margin-bottom: 20px;
 }
 
-.input-container input {
+.input-container input, textarea  {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -168,6 +194,12 @@ form {
   outline: none;
   background: white;
 }
+
+.input-container textarea{
+    max-height: 100%;
+    overflow: hidden;
+}
+
 
 .input-container label {
   position: absolute;
@@ -182,13 +214,14 @@ form {
 }
 
 .input-container input:focus + label,
-.input-container input:not(:placeholder-shown) + label {
-  top: -10px;
+.input-container input:not(:placeholder-shown) + label,
+.input-container textarea:focus + label,
+.input-container textarea:not(:placeholder-shown) + label {
+  top: -8px;
   left: 10px;
   font-size: 12px;
-  color: black;
+  color:black;
 }
-
 .input-container input:focus {
   border-color: black;
 }
@@ -226,7 +259,7 @@ form {
 
 
 .job-card {
-  background-color: white;
+  background-color: #ffffff;
   padding: 25px;
   margin-top: 20px;
 
@@ -268,6 +301,219 @@ form {
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 15px;
   }
+
+
+/*----------------------------- Job details ---------------------------*/
+
+.job-details{
+    display: grid;
+    grid-template-columns:  minmax(300px, 350px) 1fr;
+    column-gap: 40px;
+    padding: 30px;
+    align-items:start;
+}
+
+@media (max-width:750px){
+    .job-details{
+        grid-template-columns: 1fr;
+        row-gap:40px;
+        padding: 20px;
+    }
+
+
+}
+
+
+.card{
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.overview-card {
+    max-width: 550px;
+}
+
+.overview-card h2 {
+    margin-bottom: 18px;
+    font-size: 20px;
+    color: #333;
+}
+
+.overview-row {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    padding: 8px 0;
+    border-bottom: 1px dashed #e0e0e0;
+    font-size: 14px;
+    color: #555;
+}
+
+.overview-row p{
+    font-weight: bold;
+}
+
+ .overview-row:last-of-type {
+    border-bottom: none;
+}
+
+.details h2{
+    margin-bottom: 0px;
+}
+
+.description-list{
+    list-style-type: none;
+    padding: 0px;
+    color: #555;
+  line-height: 2em;
+}
+
+.description-list li {
+    display:flex;
+    align-items: center;
+}
+
+.circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: black;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.details-grid{
+    display:grid;
+    grid-template-columns:  1fr 1fr;
+    column-gap: 20px;
+
+}
+
+.details-overview-row{
+    justify-content: flex-start;
+}
+
+.custom-label{
+    width: 140px;
+    display: inline-block;
+}
+
+.details-grid .overview-row:last-of-type {
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.divider-text {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #aaa;
+  margin-top:20px;
+  width: 100%;
+}
+
+.divider-text hr {
+  flex: 1;
+  }
+
+.divider-text span {
+  padding: 0 8px;
+  font-size: 14px;
+  color: black;
+  font-weight:bold;
+}
+
+.register-option{
+text-align:center;
+    margin-bottom: 0px;
+}
+
+
+.register-option a{
+    font-weight: bold;
+}
+
+
+
+/*----------------------------- Apply Job ---------------------------*/
+.apply-job-form{
+    position:absolute;
+    outline: 1px solid black;
+    border-radius: 10px;
+    left: 50%;
+    transform: translate(-50%);
+    background: white;
+    width: 800px;
+    overflow: hidden;
+    padding: 20px;
+    display:none;
+}
+
+@media (max-width: 700px) {
+  .apply-job-form {
+    width: 95%;
+  }
+}
+
+
+.appy-job-form form{
+      border-radius: 8px;
+}
+
+.apply-job-form form input,
+.apply-job-form form textarea {
+  background: whitesmoke;
+}
+
+.apply-job-form form label{
+    background: whitesmoke;
+}
+
+.cancel-btn{
+    background: #145650;
+}
+
+.cancel-btn:hover{
+background: #0f3f3b;
+
+}
+
+
+.apply-job-form h2{
+    margin: 0px;
+    font-size:15px;
+}
+
+.divider{
+    border-top: 1px solid #ccc;
+  margin: 20px 0;
+
+}
+
+.x-btn {
+
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+  color: #ccc;
+}
+
+
+
+
+
+
+
+.form-header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: #ccc;
+    margin-bottom: 10px;
+}
 

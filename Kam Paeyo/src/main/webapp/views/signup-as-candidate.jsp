@@ -9,9 +9,10 @@
 
 </head>
 <body>
-   <%@ include file="includes/navigation.jsp" %>
+
 
 <div class="container">
+<img src="images/registration-as-candidate.jpeg"/>
     <div class="form-box">
         <h2>Create an Account</h2>
         <p>Sign up as a Candidate</p>
@@ -57,9 +58,16 @@
                       </button>
                 </div>
             </div>
-            <input type="submit" value="submit" class="btn"/>
+            <button type="submit" class="btn">Register</button>
         </form>
-        <p>Already have an account? <a href="login.jsp">Login</a></p>
+        <div class="divider-text">
+            <hr>
+          <span>or</span>
+           <hr>
+        </div>
+        <p class="register-option">Register as an recruiter? <a href="signup-as-recruiter.jsp">Signup</a></p>
+
+        <p class="register-option">Already have an account? <a href="login.jsp">Login</a></p>
     </div>
 </div>
 </body>
