@@ -10,11 +10,14 @@ public class RecruiterQuery {
                     "industry VARCHAR(255) NOT NULL, " +
                     "website VARCHAR(255), " +
                     "location VARCHAR(255), " +
-                    "created_at TIMESTAMP NOT NULL" +
+                    "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
                     ");";
 
     public static final String INSERT_DATA =
-            "INSERT INTO recruiters (id, email, password, firm_name, industry, website, location, created_at) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+            "INSERT INTO recruiters (id, email, password, firm_name, industry, website, location) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?);";
+
+
+    public static final String LOGIN_QUERY = "SELECT * FROM recruiters WHERE email = ? AND password = ?";
 
 }

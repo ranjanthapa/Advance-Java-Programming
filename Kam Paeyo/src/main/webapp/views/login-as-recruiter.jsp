@@ -12,7 +12,7 @@
 
 <div class="container">
 
-<img src="images/login-image.jpeg"/>
+<img src="${pageContext.request.contextPath}/images/login-image.jpeg"/>
     <div class="form-box">
         <h2>Login to your account</h2>
         <p class="text-justify-center">One <span class="font-bold">click </span>and ready to manage job posts and unlock exciting <br> opportunities!</p>
@@ -23,7 +23,7 @@
             </div>
         <% } %>
 
-        <form method="post" action="login">
+        <form method="post" action="login/recruiter">
             <div class="input-container">
                 <input type="email" name="email" placeholder=" " required>
                  <label for="email">Email</label>
@@ -45,7 +45,7 @@
                   <span>or</span>
                    <hr>
                 </div>
-                <p class="register-option">Login as an recruiter? <a href="login-as-recruiter.jsp">Sign-In</a></p>
+                <p class="register-option">Login as an candidate? <a href="${pageContext.request.contextPath}/login.jsp">Sign-In</a></p>
 
         <p class="register-option">Don't have an account? <a href="signup-as-candidate.jsp">Sign up</a></p>
     </div>

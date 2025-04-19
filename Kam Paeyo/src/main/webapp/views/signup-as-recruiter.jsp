@@ -17,7 +17,7 @@
     <div class="form-box">
         <h2>Create an Account</h2>
         <p>Sign up as a recruiter</p>
-        <form method="post" action="register">
+        <form method="post" action="register-recruiter">
         <input type="text" name="type" value="recruiter" hidden/>
 
             <div class="input-container">

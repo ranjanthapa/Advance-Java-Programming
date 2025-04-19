@@ -16,8 +16,9 @@ public class CandidateQuery {
             + ");";
 
 
-    public  static final String INSERT_DATA = "INSERT INTO candidates (id,email, password, first_name, last_name, " +
-            "phone_number) VALUES (?,?, ?, ?, ?, ?)";
+    public static final String INSERT_DATA = "INSERT INTO candidates (id, email, password, first_name, last_name," +
+            " location, website, phone_number, education) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
 
     public static final String LOGIN_QUERY = "SELECT * FROM candidates WHERE email = ? AND password = ?";
 }

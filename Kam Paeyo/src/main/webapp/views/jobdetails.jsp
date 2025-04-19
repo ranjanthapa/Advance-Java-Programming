@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Available Jobs</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -94,7 +94,7 @@
               </div>
            </div>
 
-            <div class="apply-btn-container" onclick="openForm()">
+            <div class="apply-btn-container" onclick="openApplyForm()">
                 <button class="apply-btn"><i class="fa-solid fa-paper-plane"></i> Apply Now</button>
             </div>
        </div>
@@ -102,7 +102,7 @@
    <%@ include file="includes/apply-job.jsp" %>
 
    </section>
+<script src="${pageContext.request.contextPath}/scripts/index.js"></script>
 
-   <script src="scripts/index.js"></script>
 </body>
 </html>

@@ -10,7 +10,6 @@ import java.sql.*;
 
 public class CandidateService {
 
-//    @TableExists(tableName = "candidates", createQuery = CandidateQuery.CREATE_CANDIDATE_TABLE)
 public static boolean register(Candidate candidate) {
     try (Connection conn = DbConnection.getConnection()) {
         if (DbUtils.checkTableExists(conn, "candidates")) {
@@ -22,7 +21,11 @@ public static boolean register(Candidate candidate) {
             stmt.setString(3, candidate.getPassword());
             stmt.setString(4, candidate.getFirstName());
             stmt.setString(5, candidate.getLastName());
-            stmt.setString(6, candidate.getPhoneNumber());
+            stmt.setString(6, candidate.getLocation());
+            stmt.setString(7, candidate.getWebsite());
+            stmt.setString(8, candidate.getPhoneNumber()); // was 9
+            stmt.setString(9, candidate.getEducation());   // was 8
+
             return stmt.executeUpdate() > 0;
         }
     } catch (Exception e) {
@@ -33,7 +36,7 @@ public static boolean register(Candidate candidate) {
 
     public static boolean login(String email, String password) {
         try (Connection conn = DbConnection.getConnection()) {
-            ResultSet rs = UserUtils.checkCredential(conn, email, password);
+            ResultSet rs = UserUtils.checkCredential(conn, email, password, CandidateQuery.LOGIN_QUERY);
 
             if (rs != null && rs.next()) {
                 System.out.println("Login successful for user: " + rs.getString("email"));

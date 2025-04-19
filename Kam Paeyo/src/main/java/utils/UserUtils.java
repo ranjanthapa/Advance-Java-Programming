@@ -7,9 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class UserUtils {
-    public static ResultSet checkCredential(Connection conn, String email, String password) {
+    public static ResultSet checkCredential(Connection conn, String email, String password,String AuthQuery) {
         try {
-            PreparedStatement stmt = conn.prepareStatement(CandidateQuery.LOGIN_QUERY);
+            PreparedStatement stmt = conn.prepareStatement(AuthQuery);
             stmt.setString(1, email);
             stmt.setString(2, password);
             return stmt.executeQuery();

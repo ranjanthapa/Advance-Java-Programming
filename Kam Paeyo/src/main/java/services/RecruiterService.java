@@ -4,9 +4,12 @@ import config.DbConnection;
 import model.Recruiter;
 import queries.RecruiterQuery;
 import utils.DbUtils;
+import utils.UserUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class RecruiterService {
     public  static boolean register(Recruiter recruiter){
@@ -22,12 +25,28 @@ public class RecruiterService {
                 stmt.setString(5, recruiter.getIndustry());
                 stmt.setString(6, recruiter.getWebsite());
                 stmt.setString(7, recruiter.getLocation());
-                stmt.setTimestamp(8, recruiter.getCreatedAt());
                 return stmt.executeUpdate() > 0;
             }
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+
+    public static boolean login(String email, String password) {
+        try (Connection conn = DbConnection.getConnection()) {
+            ResultSet rs = UserUtils.checkCredential(conn, email, password, RecruiterQuery.LOGIN_QUERY);
+
+            if (rs != null && rs.next()) {
+                System.out.println("Login successful for user: " + rs.getString("email"));
+                return true;
+            } else {
+                System.out.println("Invalid email or password.");
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }

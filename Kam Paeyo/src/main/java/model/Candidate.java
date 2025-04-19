@@ -14,21 +14,20 @@ public class Candidate {
     private String experience;
     private String website;
     private String location;
-    private final Timestamp createdAt;
 
-    public Candidate(String firstName, String lastName, String email, String phoneNumber, String password) {
+    public Candidate(String firstName, String lastName, String email, String phoneNumber, String password, String location,
+                     String website, String education) {
         this.id = UUID.randomUUID().toString();
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-        this.education = null;
+        this.website = (website != null && !website.trim().isEmpty()) ? website : null;
         this.experience = null;
-        this.website = null;
-        this.location = null;
+        this.location = location;
+        this.education = education;
 
-        this.createdAt = new Timestamp(System.currentTimeMillis());
     }
 
     public String getId() { return id; }
@@ -60,7 +59,6 @@ public class Candidate {
     public String getLocation() { return location; }
     public void setLocation(String location) { this.location = location; }
 
-    public Timestamp getCreatedAt() { return createdAt; }
 
     @Override
     public String toString() {

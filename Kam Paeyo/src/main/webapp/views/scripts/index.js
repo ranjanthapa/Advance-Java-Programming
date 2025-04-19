@@ -21,19 +21,12 @@ function toggleEyeButton(btn, fieldID) {
     }
 }
 
-
-function closeForm() {
-  const contentToHide = document.querySelector(".apply-job-form");
-  if (contentToHide) {
-    contentToHide.style.display = "none";
-  }
+function openApplyForm() {
+    document.getElementById("jobApplyOverlay").style.display = "flex";
 }
 
-function openForm(){
-    const contentToHide = document.querySelector(".apply-job-form");
-      if (contentToHide) {
-        contentToHide.style.display = "block";
-      }
+function closeApplyForm() {
+    document.getElementById("jobApplyOverlay").style.display = "none";
 }
 
 // Wait for the DOM to fully load before attaching listeners

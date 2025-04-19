@@ -1,3 +1,6 @@
+<%@ page import="constants.Education" %>
+
+<%@ page import="constants.Education" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,6 +41,29 @@
             <div class="input-container">
                  <input type="text" name="phoneNumber" placeholder=" " required>
                  <label for="phoneNumber">Phone Number</label>
+            </div>
+            <div class="input-container">
+                <input type="text" name="location" placeholder=" " required>
+                <label for="location">Location</label>
+            </div>
+
+            <div class='form-group'>
+                <div class="input-container flex-grow   ">
+                    <input type="url" name="website" placeholder=" ">
+                    <label for="website">Website (Optional)</label>
+                </div>
+
+
+                <div class="input-container">
+                    <select name="education" required>
+                        <option value="" disabled selected hidden>Education</option>
+                        <option value="High School">High School</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="Bachelor">Bachelor</option>
+                        <option value="Master">Master</option>
+                        <option value="PhD">PhD</option>
+                    </select>
+                </div>
             </div>
 
             <div class="form-group">
