@@ -20,11 +20,11 @@ public class LoginRecruiter extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        boolean isLoggedIn = RecruiterService.login(email, password);
+        String userId = RecruiterService.login(email, password);
 
-        if (isLoggedIn) {
-            req.getSession().setAttribute("email", email);
+        if (userId != null) {
             req.getSession().setAttribute("role", "recruiter");
+            req.getSession().setAttribute("userId", userId);
             resp.sendRedirect(req.getContextPath() + "/admin-dashboard.jsp");
         } else {
             req.setAttribute("error", "Invalid email or password.");

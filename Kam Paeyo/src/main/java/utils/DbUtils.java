@@ -1,6 +1,5 @@
 package utils;
 
-import model.Candidate;
 import queries.GeneralQuery;
 
 import java.sql.*;

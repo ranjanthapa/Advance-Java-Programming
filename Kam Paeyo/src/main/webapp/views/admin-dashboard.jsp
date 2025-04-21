@@ -19,7 +19,10 @@
     <div class="main-content">
         <div class="dashboard-header">
         <h1>Welcome, Admin</h1>
-        <button class="btn">Add Job</button>
+       <a href="create-job.jsp" class="btn">
+           Add Job
+       </a>
+
         </div>
 
         <div class="stats-container">
@@ -42,8 +45,36 @@
         </div>
 
         <div class="divider"></div>
-            <h2>Recent Applications</h2>
-            <p>Coming soon: List of latest applications...</p>
+        <h2>Posted Jobs</h2>
+            <table class="job-table">
+                        <thead>
+                            <tr>
+                                <th>Job Title</th>
+                                <th>Company</th>
+                                <th>Location</th>
+                                <th>Date Posted</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Example job entries (use dynamic data from the backend) -->
+                            <tr>
+                                <td>Software Engineer</td>
+                                <td>ABC Corp</td>
+                                <td>Kathmandu, Nepal</td>
+                                <td>2025-04-20</td>
+                                <td><button class="apply-btn">Apply</button></td>
+                            </tr>
+                            <tr>
+                                <td>Marketing Specialist</td>
+                                <td>XYZ Ltd</td>
+                                <td>Pokhara, Nepal</td>
+                                <td>2025-04-18</td>
+                                <td><button class="apply-btn">Apply</button></td>
+                            </tr>
+                            <!-- Repeat the above rows dynamically for all posted jobs -->
+                        </tbody>
+                    </table>
         </div>
   </div>
 </body>

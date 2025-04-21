@@ -1,6 +1,6 @@
 package servlets;
 
-import model.Recruiter;
+import dto.Recruiter;
 import services.RecruiterService;
 
 import javax.servlet.ServletException;

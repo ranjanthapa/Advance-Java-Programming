@@ -1,19 +1,14 @@
 package servlets;
 
-import constants.Education;
-import model.Candidate;
-import model.Recruiter;
+import dto.Candidate;
 import services.CandidateService;
-import services.RecruiterService;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
 
 @WebServlet(value = "/register" , name = "Candidate")
 public class RegisterUserServlet extends HttpServlet {

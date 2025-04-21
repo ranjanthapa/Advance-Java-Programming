@@ -1,7 +1,7 @@
 package services;
 
 import config.DbConnection;
-import model.Recruiter;
+import dto.Recruiter;
 import queries.RecruiterQuery;
 import utils.DbUtils;
 import utils.UserUtils;
@@ -34,19 +34,21 @@ public class RecruiterService {
     }
 
 
-    public static boolean login(String email, String password) {
+    public static String login(String email, String password) {
         try (Connection conn = DbConnection.getConnection()) {
             ResultSet rs = UserUtils.checkCredential(conn, email, password, RecruiterQuery.LOGIN_QUERY);
 
             if (rs != null && rs.next()) {
-                System.out.println("Login successful for user: " + rs.getString("email"));
-                return true;
+                String id = rs.getString("id");
+                System.out.println("Login successful for user: " + rs.getString("email") + " with id: " + id);
+                return id;
             } else {
                 System.out.println("Invalid email or password.");
-                return false;
+                return null;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
 }
