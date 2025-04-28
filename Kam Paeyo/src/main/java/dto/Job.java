@@ -1,6 +1,8 @@
 package dto;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.UUID;
 
 public class Job {
@@ -14,7 +16,27 @@ public class Job {
     private String type;
     private String salary;
     private Date deadline;
+    private Timestamp createdAt;
     private String description;
+
+
+    public Job(String id, String title, String company, String experience, String location, String vacancy,
+               String type, String salary, Date deadline, String description, String userId, Timestamp createdAt) {
+        this.id = id;
+        this.title = title;
+        this.company = company;
+        this.experience = experience;
+        this.location = location;
+        this.vacancy = vacancy;
+        this.type = type;
+        this.salary = salary;
+        this.deadline = deadline;
+        this.description = description;
+        this.userId = userId;
+        this.createdAt = createdAt;
+    }
+
+
 
     public Job(String title, String company, String experience, String location, String vacancy, String type,
                String salary, Date deadline, String description, String userId) {
@@ -63,4 +85,15 @@ public class Job {
 
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+
+    public String getCreatedAt() {
+        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
+        return formatter.format(createdAt);
+    }
+
+    public String getFormattedDeadline() {
+        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
+        return formatter.format(deadline);
+    }
+
 }

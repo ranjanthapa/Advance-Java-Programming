@@ -15,7 +15,7 @@
    <%@ include file="includes/admin-sidebar.jsp" %>
     <div class="main-content">
         <h2>Create a New Job Posting</h2>
-        <form class="job-form" action="job" method="post">
+        <form class="job-form" action="admin/job" method="post">
             <div class="form-grid">
                 <div class="form-group">
                     <label for="title">Job Title</label>

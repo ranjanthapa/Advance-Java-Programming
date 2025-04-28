@@ -21,7 +21,7 @@
         <p>Sign up as a Candidate</p>
         <form action="register" method="POST">
         <input type="text" name="type" value="candidate" hidden/>
-            <div class="form-group">
+            <div class="form-group-h">
                 <div class="input-container">
                     <input type="text" name="firstName" placeholder=" " required>
                     <label for="firstname">First Name</label>
@@ -47,7 +47,7 @@
                 <label for="location">Location</label>
             </div>
 
-            <div class='form-group'>
+            <div class='form-group-h'>
                 <div class="input-container flex-grow   ">
                     <input type="url" name="website" placeholder=" ">
                     <label for="website">Website (Optional)</label>

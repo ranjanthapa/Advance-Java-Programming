@@ -1,7 +1,6 @@
 package servlets;
 
 
-import services.CandidateService;
 import services.RecruiterService;
 
 import javax.servlet.ServletException;
@@ -25,10 +24,12 @@ public class LoginRecruiter extends HttpServlet {
         if (userId != null) {
             req.getSession().setAttribute("role", "recruiter");
             req.getSession().setAttribute("userId", userId);
-            resp.sendRedirect(req.getContextPath() + "/admin-dashboard.jsp");
+            resp.sendRedirect(req.getContextPath() + "/admin/job");
         } else {
             req.setAttribute("error", "Invalid email or password.");
-            req.getRequestDispatcher("/login-as-recruiter.jsp").forward(req, resp);
+//            req.getRequestDispatcher("/login-as-recruiter.jsp").forward(req, resp);
+            resp.sendRedirect(req.getContextPath() + "/login-as-recruiter.jsp");
+
         }
     }
 }

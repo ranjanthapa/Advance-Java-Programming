@@ -25,7 +25,7 @@
                 <label for="firmName">Firm Name</label>
             </div>
 
-            <div class="form-group">
+            <div class="form-group-h">
                 <div class="input-container">
                     <input type="email" name="email" placeholder=" " required>
                     <label for="email">Company Email</label>

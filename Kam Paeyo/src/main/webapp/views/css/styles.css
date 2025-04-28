@@ -40,9 +40,10 @@ display: flex;
 }
 
 #toggle-btn {
+color:black;
   position: absolute;
   right: 10px;
-  top: 50%;
+  top: 28%;
   transform: translateY(-50%);
   background: transparent;
   border: none;
@@ -621,6 +622,8 @@ background: #0f3f3b;
       border-radius: 8px;
     }
 
+
+
     .sidebar h2 {
       text-align: center;
       margin-bottom: 20px;
@@ -692,7 +695,6 @@ background: #0f3f3b;
 
     /*----------------------------- Apply Job ---------------------------*/
 
-/* Card and Layout Styling */
     .vacancy-form-container {
       display: flex;
       justify-content: center;
@@ -822,7 +824,6 @@ background: #0f3f3b;
 }
 
 .form-group label {
-  font-weight: bold;
   margin-bottom: 8px;
   color: #333;
 }
@@ -894,6 +895,61 @@ background: #0f3f3b;
     flex-direction: column;
     align-items: stretch;
   }
+}
+
+
+
+/*----------------------------- Table ---------------------------*/
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+
+/*----------------------------- Toastify ---------------------------*/
+
+.customToast {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.customToast.show {
+    display: block;
+    opacity: 1;
 }
 
 
