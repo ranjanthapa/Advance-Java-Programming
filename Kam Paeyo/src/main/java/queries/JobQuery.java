@@ -27,13 +27,12 @@ public class JobQuery {
     public static final String TOTAL_ACTIVE_JOB = "SELECT COUNT(*) AS active_job FROM jobs WHERE recruiter_id = ?" +
             " AND status = 'active'";
 
-    public static final String GET_JOBS = "SELECT * FROM jobs WHERE status = 'active' ORDER BY created_at DESC";
+    public static final String GET_JOBS = "SELECT * FROM jobs WHERE recruiter_id= ? ORDER BY created_at DESC";
 
     public static final String STATUS_UPDATE = "UPDATE jobs SET status = 'expired' WHERE deadline < CURRENT_DATE " +
             "AND status != 'expired'";
 
-
-    public static final String GET_JOB_BY_ID = "SELECT * FROM jobs WHERE id = ?";
-
     public static final String DELETE_JOB = "DELETE FROM jobs WHERE id = ? AND recruiter_id = ?";
+
+    public static final String FILTER_JOB = "SELECT * FROM jobs WHERE recruiter_id = ?";
 }

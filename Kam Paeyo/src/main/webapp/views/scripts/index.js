@@ -21,6 +21,8 @@ function toggleEyeButton(btn, fieldID) {
     }
 }
 
+
+
 function openApplyForm() {
     document.getElementById("jobApplyOverlay").style.display = "flex";
 }

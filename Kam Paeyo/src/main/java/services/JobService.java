@@ -2,6 +2,7 @@ package services;
 
 import config.DbConnection;
 import dto.Job;
+import enums.JobStatus;
 import queries.JobQuery;
 import utils.DbUtils;
 
@@ -11,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class JobService {
 
@@ -81,20 +83,24 @@ public class JobService {
             e.printStackTrace();
         }
     }
-    public static List<Job> getJobs(Integer limit) {
+
+    public static List<Job> getJobs(Integer limit,String recruiterId) {
         List<Job> jobs = new ArrayList<>();
         String getJobQuery = JobQuery.GET_JOBS;
+
+        System.out.println("Printing the recruiter id" + recruiterId);
 
         if (limit != null && limit > 0) {
             getJobQuery += " LIMIT ?";
         }
-
         try (Connection connection = DbConnection.getConnection()) {
             updateJobStatuses(connection);
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(getJobQuery)) {
+                preparedStatement.setString(1, recruiterId);
+
                 if (limit != null && limit > 0) {
-                    preparedStatement.setInt(1, limit);
+                    preparedStatement.setInt(2, limit);
                 }
 
                 ResultSet rs = preparedStatement.executeQuery();
@@ -112,7 +118,8 @@ public class JobService {
                             rs.getDate("deadline"),
                             rs.getString("description"),
                             rs.getString("recruiter_id"),
-                            rs.getTimestamp("created_at")
+                            rs.getTimestamp("created_at"),
+                            JobStatus.valueOf(rs.getString("status").toUpperCase())
                     );
                     jobs.add(job);
                 }
@@ -124,6 +131,80 @@ public class JobService {
 
         return jobs;
     }
+
+    public static boolean deleteJob(String jobId, String authorId) {
+        try (Connection connection = DbConnection.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(JobQuery.DELETE_JOB)) {
+
+            stmt.setString(1, jobId);
+            stmt.setString(2, authorId);
+            System.out.println(jobId + authorId + "From the service method");
+            int rowsAffected = stmt.executeUpdate();
+            System.out.println(jobId + "is being deleted.............");
+            System.out.println(rowsAffected > 0);
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+    public static List<Job> filterJob(String authorId, Map<String, String> queryParams) {
+        List<Job> jobs = new ArrayList<>();
+        StringBuilder query = new StringBuilder(JobQuery.FILTER_JOB);
+        List<String> validFilters = List.of("company", "type", "location", "status");
+
+        List<Object> params = new ArrayList<>();
+        params.add(authorId);
+
+        for (String key : validFilters) {
+            String value = queryParams.get(key);
+            if (!value.isEmpty()) {
+                query.append(" AND ").append(key).append(" = ?");
+                params.add(value);
+            }
+        }
+
+        query.append(" ORDER BY created_at DESC");
+
+        System.out.println(query);
+
+        try (Connection conn = DbConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query.toString())) {
+
+            for (int i = 0; i < params.size(); i++) {
+                stmt.setObject(i + 1, params.get(i));
+            }
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Job job = new Job(
+                        rs.getString("id"),
+                        rs.getString("title"),
+                        rs.getString("company"),
+                        rs.getString("experience"),
+                        rs.getString("location"),
+                        rs.getString("vacancy"),
+                        rs.getString("type"),
+                        rs.getString("salary"),
+                        rs.getDate("deadline"),
+                        rs.getString("description"),
+                        rs.getString("recruiter_id"),
+                        rs.getTimestamp("created_at"),
+                        JobStatus.valueOf(rs.getString("status").toUpperCase())
+                );
+                jobs.add(job);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("all the filter jobs are " + jobs);
+        return jobs;
+    }
+
 
 
 }

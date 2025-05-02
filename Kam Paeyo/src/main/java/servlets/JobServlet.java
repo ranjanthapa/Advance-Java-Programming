@@ -17,11 +17,11 @@ public class JobServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Job> jobs = JobService.getJobs(1);
         String recruiterId = (String) request.getSession().getAttribute("userId");
+        List<Job> jobs = JobService.getJobs(2, recruiterId);
+
         int totalJobs = JobService.getTotalJobCount(recruiterId);
         int totalActiveJobs = JobService.getTotalActiveJobs(recruiterId);
-
         request.setAttribute("postedJobList", jobs);
         request.setAttribute("totalJobs", totalJobs);
         request.setAttribute("totalActiveJobs", totalActiveJobs);
@@ -48,9 +48,9 @@ public class JobServlet extends HttpServlet {
 
             if (success) {
                 request.getSession().setAttribute("jobPosted", true);
-//                response.sendRedirect("admin-dashboard.jsp");
 
-                response.sendRedirect("admin/job");
+                response.sendRedirect(request.getContextPath() + "/admin/job");
+
 
             } else {
                 response.sendRedirect("create-job.jsp");
@@ -60,4 +60,29 @@ public class JobServlet extends HttpServlet {
             response.sendRedirect("create-job.jsp");
         }
     }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String jobId = req.getParameter("id");
+        String recruiterId = (String) req.getSession().getAttribute("userId");
+
+        resp.setContentType("application/json");
+
+        if (jobId != null) {
+            boolean deleted = JobService.deleteJob(jobId, recruiterId);
+            if (deleted) {
+                req.getSession().setAttribute("jobDeleted", true);
+                resp.setStatus(HttpServletResponse.SC_OK);
+                resp.getWriter().write("{\"success\": true}");
+            } else {
+                resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                resp.getWriter().write("{\"success\": false, \"message\": \"Failed to delete job.\"}");
+            }
+        } else {
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            resp.getWriter().write("{\"success\": false, \"message\": \"Invalid job ID.\"}");
+        }
+    }
+
+
 }

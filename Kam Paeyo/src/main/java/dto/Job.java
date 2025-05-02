@@ -1,5 +1,7 @@
 package dto;
 
+import enums.JobStatus;
+
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -18,10 +20,11 @@ public class Job {
     private Date deadline;
     private Timestamp createdAt;
     private String description;
-
+    private final JobStatus status;
 
     public Job(String id, String title, String company, String experience, String location, String vacancy,
-               String type, String salary, Date deadline, String description, String userId, Timestamp createdAt) {
+               String type, String salary, Date deadline, String description, String userId, Timestamp createdAt,
+               JobStatus status) {
         this.id = id;
         this.title = title;
         this.company = company;
@@ -34,6 +37,7 @@ public class Job {
         this.description = description;
         this.userId = userId;
         this.createdAt = createdAt;
+        this.status = status;
     }
 
 
@@ -51,6 +55,7 @@ public class Job {
         this.deadline = deadline;
         this.description = description;
         this.userId = userId;
+        this.status = JobStatus.ACTIVE;
     }
 
 
@@ -96,4 +101,7 @@ public class Job {
         return formatter.format(deadline);
     }
 
+    public JobStatus getStatus(){
+        return status;
+    }
 }

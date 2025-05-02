@@ -55,7 +55,7 @@
                     <th>Company</th>
                     <th>Location</th>
                     <th>Date Posted</th>
-                    <th>DeadLine
+                    <th>DeadLine</th>
                     <th>Actions</th>
                 </tr>
             </thead>
