@@ -13,7 +13,8 @@ public class DbUtils {
             try (ResultSet result = stmt.executeQuery()) {
                 System.out.println("Checking table exists in the db utils" + result);
                 System.out.println(result.next());
-                return result.next();
+                boolean isExist = result.next();
+                return isExist;
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -18,6 +18,6 @@ public class RecruiterQuery {
                     "VALUES (?, ?, ?, ?, ?, ?, ?);";
 
 
-    public static final String LOGIN_QUERY = "SELECT * FROM recruiters WHERE email = ? AND password = ?";
+    public static final String FETCH_USER_BY_EMAIL = "SELECT * FROM recruiters WHERE email = ?";
 
 }

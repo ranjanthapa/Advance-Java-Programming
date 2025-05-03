@@ -1,22 +1,28 @@
 package utils;
 
-import queries.CandidateQuery;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class UserUtils {
-    public static ResultSet checkCredential(Connection conn, String email, String password,String AuthQuery) {
+    public static String checkCredential(Connection conn, String email, String plainPassword, String query) {
         try {
-            PreparedStatement stmt = conn.prepareStatement(AuthQuery);
+            PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, email);
-            stmt.setString(2, password);
-            return stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                String hashedPassword = rs.getString("password");
+                if (PasswordUtils.checkPassword(plainPassword, hashedPassword)) {
+                    return rs.getString("id");
+                }
+            }
+            return null;
 
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
+
 }

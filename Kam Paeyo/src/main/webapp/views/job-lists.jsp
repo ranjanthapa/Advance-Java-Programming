@@ -56,7 +56,7 @@
                         </td>
                         <td>
                             <div class="action-buttons">
-                                <button class="btn-edit">Edit</button>
+                                <button class="btn-edit"> <a href="<%= request.getContextPath() %>/admin/job/edit?id=<%= job.getId() %>" class="btn-edit">Edit</a></button>
                                 <button class="btn-delete" onclick="openDeleteModal('<%= job.getId() %>')">Delete</button>
                             </div>
                         </td>
@@ -145,6 +145,14 @@
         if (jobPosted != null && jobPosted) {
             session.removeAttribute("jobPosted"); %>
             showToast("Job posted successfully!");
+        <% } %>
+
+        <%
+        Boolean jobUpdated = (Boolean) session.getAttribute("jobUpdated");
+        if (jobUpdated != null && jobUpdated) {
+            session.removeAttribute("jobUpdated");
+        %>
+            showToast("Job updated successfully!");
         <% } %>
 
 

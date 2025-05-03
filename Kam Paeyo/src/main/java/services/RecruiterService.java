@@ -4,6 +4,7 @@ import config.DbConnection;
 import dto.Recruiter;
 import queries.RecruiterQuery;
 import utils.DbUtils;
+import utils.PasswordUtils;
 import utils.UserUtils;
 
 import java.sql.Connection;
@@ -17,10 +18,12 @@ public class RecruiterService {
             if (!DbUtils.checkTableExists(conn, "recruiters")) {
                 DbUtils.createTable(RecruiterQuery.CREATE_TABLE, conn);
             }
+
+            String hashPassword = PasswordUtils.hashPassword(recruiter.getPassword());
             try (PreparedStatement stmt = conn.prepareStatement(RecruiterQuery.INSERT_DATA)) {
                 stmt.setString(1, recruiter.getId());
                 stmt.setString(2, recruiter.getEmail());
-                stmt.setString(3, recruiter.getPassword());
+                stmt.setString(3, hashPassword);
                 stmt.setString(4, recruiter.getFirmName());
                 stmt.setString(5, recruiter.getIndustry());
                 stmt.setString(6, recruiter.getWebsite());
@@ -36,19 +39,20 @@ public class RecruiterService {
 
     public static String login(String email, String password) {
         try (Connection conn = DbConnection.getConnection()) {
-            ResultSet rs = UserUtils.checkCredential(conn, email, password, RecruiterQuery.LOGIN_QUERY);
+            String userId = UserUtils.checkCredential(conn, email, password, RecruiterQuery.FETCH_USER_BY_EMAIL);
 
-            if (rs != null && rs.next()) {
-                String id = rs.getString("id");
-                System.out.println("Login successful for user: " + rs.getString("email") + " with id: " + id);
-                return id;
+            if (userId != null) {
+                System.out.println("Login successful for user: " + email + " with id: " + userId);
+                return userId;
             } else {
                 System.out.println("Invalid email or password.");
                 return null;
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
+
 
 }

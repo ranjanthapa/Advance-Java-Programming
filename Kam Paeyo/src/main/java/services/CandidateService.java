@@ -36,19 +36,21 @@ public static boolean register(Candidate candidate) {
 
     public static boolean login(String email, String password) {
         try (Connection conn = DbConnection.getConnection()) {
-            ResultSet rs = UserUtils.checkCredential(conn, email, password, CandidateQuery.LOGIN_QUERY);
+            String userId = UserUtils.checkCredential(conn, email, password, CandidateQuery.FETCH_USER_BY_EMAIL);
 
-            if (rs != null && rs.next()) {
-                System.out.println("Login successful for user: " + rs.getString("email"));
+            if (userId != null) {
+                System.out.println("Login successful for user: " + email + " with id: " + userId);
                 return true;
             } else {
                 System.out.println("Invalid email or password.");
                 return false;
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
+
 
 
 }

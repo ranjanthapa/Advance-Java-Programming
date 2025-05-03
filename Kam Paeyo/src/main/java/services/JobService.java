@@ -23,7 +23,7 @@ public class JobService {
             }
             PreparedStatement stmt = connection.prepareStatement(JobQuery.INSERT_JOB);
             stmt.setString(1, job.getId());
-            stmt.setString(2, job.getUserId());  // new line
+            stmt.setString(2, job.getUserId());
             stmt.setString(3, job.getTitle());
             stmt.setString(4, job.getCompany());
             stmt.setString(5, job.getExperience());
@@ -83,6 +83,72 @@ public class JobService {
             e.printStackTrace();
         }
     }
+
+
+    public static Job getJob(String id, String recruiterId) {
+        Job job = null;
+
+        try (Connection conn = DbConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(JobQuery.GET_A_JOB)) {
+
+            stmt.setString(1, id);
+            stmt.setString(2, recruiterId);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                job = new Job(
+                        rs.getString("id"),
+                        rs.getString("title"),
+                        rs.getString("company"),
+                        rs.getString("experience"),
+                        rs.getString("location"),
+                        rs.getString("vacancy"),
+                        rs.getString("type"),
+                        rs.getString("salary"),
+                        rs.getDate("deadline"),
+                        rs.getString("description"),
+                        rs.getString("recruiter_id"), // userId
+                        rs.getTimestamp("created_at"),
+                        JobStatus.valueOf(rs.getString("status").toUpperCase())
+                );
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return job;
+    }
+
+
+
+    public static boolean updateJob(Job job) {
+
+        try (Connection connection = DbConnection.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(JobQuery.UPDATE_JOB)) {
+
+            stmt.setString(1, job.getTitle());
+            stmt.setString(2, job.getCompany());
+            stmt.setString(3, job.getExperience());
+            stmt.setString(4, job.getLocation());
+            stmt.setString(5, job.getVacancy());
+            stmt.setString(6, job.getType());
+            stmt.setString(7, job.getSalary());
+            stmt.setDate(8, job.getDeadline());
+            stmt.setString(9, job.getDescription());
+            stmt.setString(10, job.getId());
+            stmt.setString(11, job.getUserId());
+            int rowsUpdated = stmt.executeUpdate();
+            return rowsUpdated > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
 
     public static List<Job> getJobs(Integer limit,String recruiterId) {
         List<Job> jobs = new ArrayList<>();

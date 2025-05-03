@@ -40,6 +40,23 @@ public class Job {
         this.status = status;
     }
 
+    public Job(String id, String title, String company, String experience, String location, String vacancy,
+               String type, String salary, Date deadline, String description, String userId, JobStatus status) {
+        this.id = id;
+        this.title = title;
+        this.company = company;
+        this.experience = experience;
+        this.location = location;
+        this.vacancy = vacancy;
+        this.type = type;
+        this.salary = salary;
+        this.deadline = deadline;
+        this.description = description;
+        this.userId = userId;
+        this.status = status;
+    }
+
+
 
 
     public Job(String title, String company, String experience, String location, String vacancy, String type,

@@ -14,9 +14,11 @@ public class JobQuery {
             + "description TEXT NOT NULL, "
             + "status VARCHAR(20) DEFAULT 'active', "
             + "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, "
+            + "updated_at TIMESTAMP DEFAULT NULL, "
             + "recruiter_id VARCHAR(255) NOT NULL, "
             + "FOREIGN KEY (recruiter_id) REFERENCES recruiters(id) ON DELETE CASCADE"
             + ");";
+
 
 
     public static final String INSERT_JOB = "INSERT INTO jobs (id, recruiter_id, title, company, experience, location," +
@@ -28,6 +30,23 @@ public class JobQuery {
             " AND status = 'active'";
 
     public static final String GET_JOBS = "SELECT * FROM jobs WHERE recruiter_id= ? ORDER BY created_at DESC";
+
+
+    public static final String GET_A_JOB = "SELECT * FROM jobs WHERE id = ? AND recruiter_id= ?";
+
+    public static final String UPDATE_JOB = "UPDATE jobs SET "
+            + "title = ?, "
+            + "company = ?, "
+            + "experience = ?, "
+            + "location = ?, "
+            + "vacancy = ?, "
+            + "type = ?, "
+            + "salary = ?, "
+            + "deadline = ?, "
+            + "description = ?, "
+            + "updated_at = CURRENT_TIMESTAMP "
+            + "WHERE id = ? AND recruiter_id = ?";
+
 
     public static final String STATUS_UPDATE = "UPDATE jobs SET status = 'expired' WHERE deadline < CURRENT_DATE " +
             "AND status != 'expired'";

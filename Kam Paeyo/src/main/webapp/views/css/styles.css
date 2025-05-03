@@ -264,8 +264,14 @@ form {
 
 .btn-edit {
       background-color: #3498db;
-
+      font-color:white;
 }
+
+.btn-edit a {
+    color: white;
+    text-decoration: none;
+}
+
 
 .btn-delete {
     background-color: #f44336;
@@ -280,13 +286,13 @@ form {
     cursor: pointer;
     border: none;
     border-radius: 4px;
-    color:white
+    font-color:white;
 }
 
 .action-buttons {
 
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 8px;
 }
