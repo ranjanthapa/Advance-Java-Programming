@@ -8,6 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+   <%@ include file="includes/navigation.jsp" %>
 
 
 <div class="container">
@@ -41,13 +42,19 @@
 
         </form>
         <div class="divider-text">
-                    <hr>
-                  <span>or</span>
-                   <hr>
-                </div>
-                <p class="register-option">Login as an recruiter? <a href="login-as-recruiter.jsp">Sign-In</a></p>
+            <hr>
+          <span>or</span>
+           <hr>
+        </div>
 
-        <p class="register-option">Don't have an account? <a href="signup-as-candidate.jsp">Sign up</a></p>
+        <p class="register-option">Don't have an account? Register as </p>
+
+        <div class= "horizontal login-option">
+            <a href="signup-as-candidate.jsp">Candidate  </a>
+            <span>/</span>
+            <a href="signup-as-recruiter.jsp"> Recruiter</a>
+        </div>
+
     </div>
 </div>
 <script>

@@ -10,6 +10,9 @@
 </head>
 <body>
 
+   <%@ include file="includes/navigation.jsp" %>
+
+
 <div class="container">
     <img src="${pageContext.request.contextPath}/images/login-image.jpeg"/>
     <div class="form-box">

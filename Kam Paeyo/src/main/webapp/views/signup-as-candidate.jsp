@@ -12,6 +12,7 @@
 
 </head>
 <body>
+       <%@ include file="includes/navigation.jsp" %>
 
 
 <div class="container">
@@ -91,9 +92,14 @@
           <span>or</span>
            <hr>
         </div>
-        <p class="register-option">Register as an recruiter? <a href="signup-as-recruiter.jsp">Signup</a></p>
+         <p class="register-option">Don't have an account? </p>
 
-        <p class="register-option">Already have an account? <a href="login.jsp">Login</a></p>
+                <div class= "horizontal login-option">
+                    <a href="signup-as-candidate.jsp">Candidate  </a>
+                    <span>/</span>
+                    <a href="signup-as-recruiter.jsp"> Recruiter</a>
+                </div>
+
     </div>
 </div>
 </body>
