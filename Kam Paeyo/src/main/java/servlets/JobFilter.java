@@ -17,18 +17,21 @@ public class JobFilter extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String recruiterId = (String) req.getSession().getAttribute("userId");
-        System.out.println("From the filter job ...........");
 
         Map<String, String> filters = new HashMap<>();
         filters.put("company", req.getParameter("company"));
         filters.put("type", req.getParameter("type"));
         filters.put("location", req.getParameter("location"));
-        filters.put("status", req.getParameter("status"));
+        filters.put("status", req.getParameter("status") != null ? req.getParameter("status").toLowerCase() : null);
+
+        System.out.println(filters);
+
 
         List<Job> filteredJobs = JobService.filterJob(recruiterId, filters);
+        System.out.println(filteredJobs);
 
-        req.setAttribute("postedJobList", filteredJobs);
-        resp.sendRedirect("admin/job-list");
+        req.getSession().setAttribute("postedJobList", filteredJobs);
+        resp.sendRedirect(req.getContextPath() + "/admin/job-list");
 
 
     }

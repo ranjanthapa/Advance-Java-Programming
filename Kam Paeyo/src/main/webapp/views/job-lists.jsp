@@ -43,9 +43,11 @@
                         int sn = 1;
                         for (Job job : jobs) {
                     %>
-                    <tr>
+                    <tr style="cursor: pointer;">
                         <td><%= sn++ %></td>
-                        <td><%= job.getTitle() %></td>
+                        <td onclick="window.location.href='<%= request.getContextPath() %>/admin/job/details/?id=<%= job.getId() %>'">
+                            <%= job.getTitle() %>
+                        </td>
                         <td><%= job.getCompany() %></td>
                         <td><%= job.getType() %></td>
                         <td><%= job.getLocation() %></td>

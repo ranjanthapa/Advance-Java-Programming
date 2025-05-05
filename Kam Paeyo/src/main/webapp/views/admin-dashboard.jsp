@@ -51,30 +51,43 @@
         <table class="job-table">
             <thead>
                 <tr>
+                <th>S.N</th>
                     <th>Job Title</th>
                     <th>Company</th>
                     <th>Location</th>
                     <th>Date Posted</th>
                     <th>DeadLine</th>
-                    <th>Actions</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <%
                     List<Job> jobs = (List<Job>) request.getAttribute("postedJobList");
                     if (jobs != null) {
+                        int sn = 1;
                         for (Job job : jobs) {
                 %>
-                <tr>
-                    <td><%= job.getTitle() %></td>
+                <tr style="cursor: pointer;">
+                    <td><%= sn++ %></td>
+                    <td onclick="window.location.href='<%= request.getContextPath() %>/admin/job/details/?id=<%= job.getId() %>'">
+                        <%= job.getTitle() %>
+                    </td>
                     <td><%= job.getCompany() %></td>
                     <td><%= job.getLocation() %></td>
                     <td><%= job.getCreatedAt() %></td>
-
                     <td><%= job.getFormattedDeadline() %></td>
-
-                    <td><button class="btn">Delete</button></td>
-
+                    <td>
+                        <div class="action-buttons">
+                            <button  class="btn-edit">
+                            <a href="<%= request.getContextPath() %>/admin/job/edit?id=<%= job.getId() %>">
+                                Edit
+                            </a>
+                            </button>
+                            <button class="btn-delete" onclick="openDeleteModal('<%= job.getId() %>')">
+                                Delete
+                            </button>
+                        </div>
+                    </td>
                 </tr>
                 <%
                         }
@@ -84,12 +97,78 @@
         </table>
     </div>
   </div>
+  <div id="modal-overlay" class="modal" style="display:none;">
+          <div class="modal-content">
+              <h3>Confirm Deletion</h3>
+              <p>Are you sure you want to delete this job?</p>
+              <div class="modal-actions">
+                  <button id="confirmDelete" class="btn-delete" onclick="confirmDelete()">Delete</button>
+                  <button class="btn-cancel" onclick="onCancel()">Cancel</button>
+              </div>
+          </div>
+      </div>
+
+
 
   <div id="customToast" class="customToast">
       Job posted successfully!
   </div>
 
   <script>
+  const contextPath = "<%= request.getContextPath() %>";
+          let selectedJobId = null;
+
+          function openDeleteModal(jobId) {
+              selectedJobId = jobId;
+              console.log("Selected job ID to delete:", selectedJobId);
+              document.getElementById("modal-overlay").style.display = "flex";
+          }
+
+          function onCancel() {
+              selectedJobId = null;
+              document.getElementById("modal-overlay").style.display = "none";
+          }
+
+          function confirmDelete() {
+                      if (!selectedJobId) {
+                          console.warn("No job ID selected.");
+                          return;
+                      }
+
+                      let deleteUrl = contextPath + "/admin/job?id=" + selectedJobId;
+
+                      fetch(deleteUrl, {
+                          method: "DELETE"
+                      })
+                      .then(response => {
+                          if (response.ok) {
+                              showToast("Job deleted successfully!");
+                              setTimeout(() => {
+                                  location.reload(); // Reload to reflect changes
+                              }, 1000);
+                          } else {
+                              return response.json().then(data => {
+                                  throw new Error(data.message || "Failed to delete.");
+                              });
+                          }
+                      })
+                      .catch(error => {
+                          console.error("Error:", error);
+                      });
+
+                      document.getElementById("modal-overlay").style.display = "none";
+                  }
+
+
+        function showToast(message) {
+            const toast = document.getElementById("customToast");
+            toast.innerText = message;
+            toast.classList.add("show");
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 2000);
+        }
+
       function showCustomToast() {
           var toast = document.getElementById('customToast');
           toast.classList.add('show');  // Add class to show the toast
@@ -103,7 +182,7 @@
          if (jobPosted != null && jobPosted) {
              session.removeAttribute("jobPosted");
       %>
-          showCustomToast();
+         showToast("JOb posted successfully");
       <% } %>
   </script>
 </body>

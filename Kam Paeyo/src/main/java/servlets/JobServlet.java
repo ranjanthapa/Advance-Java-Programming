@@ -18,7 +18,16 @@ public class JobServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String recruiterId = (String) request.getSession().getAttribute("userId");
-        List<Job> jobs = JobService.getJobs(2, recruiterId);
+        List<Job> jobs;
+
+        Object filteredJobs = request.getSession().getAttribute("postedJobList");
+        if (filteredJobs != null) {
+            jobs = (List<Job>) filteredJobs;
+            request.getSession().removeAttribute("postedJobList");
+        } else {
+            jobs = JobService.getJobs(2, recruiterId);
+        }
+
 
         int totalJobs = JobService.getTotalJobCount(recruiterId);
         int totalActiveJobs = JobService.getTotalActiveJobs(recruiterId);

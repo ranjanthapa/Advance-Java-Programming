@@ -227,15 +227,13 @@ public class JobService {
 
         for (String key : validFilters) {
             String value = queryParams.get(key);
-            if (!value.isEmpty()) {
+            if ( !value.isEmpty()) {
                 query.append(" AND ").append(key).append(" = ?");
                 params.add(value);
             }
         }
 
         query.append(" ORDER BY created_at DESC");
-
-        System.out.println(query);
 
         try (Connection conn = DbConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query.toString())) {

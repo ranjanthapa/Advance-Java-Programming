@@ -7,8 +7,7 @@
 </head>
 <body>
    <%@ include file="includes/navigation.jsp" %>
-   <a href="register"> click me
-    </a>
+
 
 
 

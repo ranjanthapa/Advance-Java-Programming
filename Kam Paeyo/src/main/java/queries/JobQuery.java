@@ -31,7 +31,7 @@ public class JobQuery {
 
     public static final String GET_JOBS = "SELECT * FROM jobs WHERE recruiter_id= ? ORDER BY created_at DESC";
 
-
+//    public static final String GET_LOCATION_AND_COMPANY = "SELECT "
     public static final String GET_A_JOB = "SELECT * FROM jobs WHERE id = ? AND recruiter_id= ?";
 
     public static final String UPDATE_JOB = "UPDATE jobs SET "
@@ -52,6 +52,8 @@ public class JobQuery {
             "AND status != 'expired'";
 
     public static final String DELETE_JOB = "DELETE FROM jobs WHERE id = ? AND recruiter_id = ?";
+
+    public static final String GET_LOCATION_COMPANY_NAME = "SELECT company, location FROM jobs where recruiter_id = ?";
 
     public static final String FILTER_JOB = "SELECT * FROM jobs WHERE recruiter_id = ?";
 }
