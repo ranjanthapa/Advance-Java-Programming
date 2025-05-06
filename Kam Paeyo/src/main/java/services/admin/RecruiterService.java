@@ -1,16 +1,14 @@
-package services;
+package services.admin;
 
 import config.DbConnection;
 import dto.Recruiter;
-import queries.RecruiterQuery;
+import queries.admin.RecruiterQuery;
 import utils.DbUtils;
 import utils.PasswordUtils;
 import utils.UserUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class RecruiterService {
     public  static boolean register(Recruiter recruiter){

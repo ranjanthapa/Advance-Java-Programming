@@ -1,9 +1,9 @@
-package services;
+package services.admin;
 
 import config.DbConnection;
 import dto.Job;
 import enums.JobStatus;
-import queries.JobQuery;
+import queries.admin.JobQuery;
 import utils.DbUtils;
 
 import java.sql.Connection;

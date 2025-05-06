@@ -92,6 +92,10 @@ body {
   padding: 0;
 }
 
+a{
+    text-decoration: none;
+}
+
 .nav-list li {
   position: relative;
 }
@@ -105,7 +109,16 @@ body {
 }
 
 
+.signup-option{
+    text-decoration: underline;
+    color:red;
+    margin-top: 0;
+}
 
+
+.register-option{
+    color: #808080;
+}
 .register-btn {
   padding: 10px 20px;
   font-weight: bold;
@@ -367,7 +380,12 @@ form {
   font-size: 15px;
   color: #555;
   line-height: 1.6;
+  max-height: 4.8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
+
 
 .job-divider {
   border: none;
@@ -651,8 +669,11 @@ form {
     color: white;
     border-radius: 50%;
     cursor: pointer;
+    font-size: 12px;
     transition: background-color 0.3s ease;
 }
+
+
 
 .search-form button:hover {
     background-color: #218ab8;
@@ -660,11 +681,13 @@ form {
 
 
 
-#formSearch  input:focus, textarea:focus, select:focus {
+#formSearch  input:focus,#formSearch select:focus {
       border-color: none;
       box-shadow: none;
       outline: none;
     }
+
+
 
 
 .flex-group-h {
@@ -959,7 +982,7 @@ background: #0f3f3b;
       .vacancy-form-container {
         padding: 10px;
       }
-    }
+    }button
 
 
 /*----------------------------- Create Job Form ---------------------------*/
@@ -1188,13 +1211,49 @@ tr:last-child td {
 
 .filter-container form select {
     font-size: 14px;
-
-  width: auto;
+    width: auto;
 }
 
 .filter-container form button{
     margin-top:0;
     font-size: 12px;
     background: #3498db;
+}
+
+
+/*----------------------------- Recruiter login card ---------------------------*/
+
+.recruiter-login-card {
+    color: white;
+    height: 400px;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    align-content:center;
+}
+
+.recruiter-head {
+    margin-left: 300px;
+}
+
+.recruiter-head h1{
+    font-size: 50px;
+    font-weight: 900;
+}
+
+
+.recruiter-login-btn {
+    border-radius: 50px;
+    background: #c82323;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 15px 50px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.recruiter-login-btn:hover {
+    background: #ee2f2f;
 
 }

@@ -1,7 +1,7 @@
-package servlets;
+package servlets.auth;
 
 import dto.Recruiter;
-import services.RecruiterService;
+import services.admin.RecruiterService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

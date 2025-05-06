@@ -1,8 +1,8 @@
 <section class="navigation">
   <ul class="nav-list">
-    <li><a href="index.jsp">Home</a></li>
+    <li><a href="<%= request.getContextPath() %>/index.jsp">Home</a></li>
     <li><a href="">Internship</a></li>
-    <li><a href="jobs.jsp">Jobs</a></li>
+    <li><a href="<%= request.getContextPath() %>/jobs">Jobs</a></li>
 
     <%
         String email = (String) session.getAttribute("email");

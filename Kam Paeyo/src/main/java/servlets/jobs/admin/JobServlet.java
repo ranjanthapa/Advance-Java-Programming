@@ -1,7 +1,7 @@
-package servlets;
+package servlets.jobs.admin;
 
 import dto.Job;
-import services.JobService;
+import services.admin.JobService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

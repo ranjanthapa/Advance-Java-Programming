@@ -1,4 +1,4 @@
-package queries;
+package queries.admin;
 
 public class JobQuery {
     public static final String CREATE_JOB_TABLE = "CREATE TABLE IF NOT EXISTS jobs ("

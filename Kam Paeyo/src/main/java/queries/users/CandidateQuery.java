@@ -1,4 +1,4 @@
-package queries;
+package queries.users;
 
 public class CandidateQuery {
     public static final String CREATE_CANDIDATE_TABLE = "CREATE TABLE IF NOT EXISTS candidates ("

@@ -2,7 +2,7 @@ package servlets;
 
 
 import dto.Job;
-import services.JobService;
+import services.admin.JobService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

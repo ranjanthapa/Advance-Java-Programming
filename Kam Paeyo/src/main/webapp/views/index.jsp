@@ -9,7 +9,7 @@
    <%@ include file="includes/navigation.jsp" %>
 
     <div class="header">
-        <h2>Join the most popular internship <br>and companies.</h2>
+        <h2>Grow Learn Lead. <br>Start your journey with industry leaders.</h2>
         <p>Helping freshers land top internships and jobs.</p>
 
         <div class="search-form">
@@ -34,10 +34,9 @@
            <a href="#">frontend</a>
            <a href="#">fullstack</a>
        </div>
-
-
     </div>
 
+   <%@ include file="includes/recruiter-login-card.jsp" %>
 
 
 

@@ -1,8 +1,8 @@
-package servlets;
+package servlets.jobs.admin;
 
 import dto.Job;
 import enums.JobStatus;
-import services.JobService;
+import services.admin.JobService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

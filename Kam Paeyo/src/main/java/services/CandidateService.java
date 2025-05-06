@@ -2,7 +2,7 @@ package services;
 
 import config.DbConnection;
 import dto.Candidate;
-import queries.CandidateQuery;
+import queries.users.CandidateQuery;
 import utils.DbUtils;
 import utils.UserUtils;
 

@@ -92,12 +92,12 @@
           <span>or</span>
            <hr>
         </div>
-         <p class="register-option">Don't have an account? </p>
+         <p class="register-option">Already have an account? Login as </p>
 
                 <div class= "horizontal login-option">
-                    <a href="signup-as-candidate.jsp">Candidate  </a>
+                    <a href="login.jsp">Candidate  </a>
                     <span>/</span>
-                    <a href="signup-as-recruiter.jsp"> Recruiter</a>
+                    <a href="login-as-recruiter.jsp"> Recruiter</a>
                 </div>
 
     </div>

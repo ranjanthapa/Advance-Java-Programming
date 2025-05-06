@@ -1,4 +1,4 @@
-package queries;
+package queries.admin;
 
 public class RecruiterQuery {
     public static final String CREATE_TABLE =

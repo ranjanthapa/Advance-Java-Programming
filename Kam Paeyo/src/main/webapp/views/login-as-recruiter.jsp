@@ -54,13 +54,13 @@
             <hr>
         </div>
 
-        <p class="register-option">Login as a candidate?
-            <a href="${pageContext.request.contextPath}/login.jsp">Sign-In</a>
-        </p>
 
-        <p class="register-option">Don't have an account?
-            <a href="signup-as-candidate.jsp">Sign up</a>
-        </p>
+
+        <p class="register-option">Don't have an account? Register as</p>
+        <div class= "horizontal login-option">
+
+                    <a href="signup-as-recruiter.jsp"> Recruiter</a>
+                </div>
     </div>
 </div>
 
