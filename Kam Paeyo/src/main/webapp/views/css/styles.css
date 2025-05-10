@@ -78,7 +78,7 @@ body {
 }
 
 .navigation {
-  padding: 10px 0;
+  padding: 20px 0;
   background-color:#17171f;
 }
 
@@ -147,6 +147,14 @@ a{
   z-index: 100;
   min-width: 180px;
 }
+
+.apply-btn.expired {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    border: none;
+}
+
 
 .register-as-box a {
   display: block;
@@ -330,6 +338,7 @@ form {
     align-items: center;
     gap: 8px;
 }
+
 
 
 
@@ -1133,6 +1142,24 @@ tr:last-child td {
     font-weight:bold;
 }
 
+
+.status {
+  font-weight: bold;
+}
+
+.status-pending {
+  color: orange;
+}
+
+.status-accepted {
+  color: green;
+}
+
+.status-rejected {
+  color: red;
+}
+
+
 /*----------------------------- Toastify ---------------------------*/
 
 .customToast {
@@ -1256,4 +1283,113 @@ tr:last-child td {
 .recruiter-login-btn:hover {
     background: #ee2f2f;
 
+}
+
+
+
+/*----------------------------- Application ---------------------------*/
+
+.application-container{
+    display: flex;
+    justify-content: center;
+}
+
+
+.application{
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: column;
+    justify-content: start;
+    padding: 30px;
+}
+
+
+  .application-stats {
+           display: flex;
+           gap: 20px;
+            border-radius: 8px;
+             margin-bottom: 30px;/* Optional: Rounded corners */
+    }
+
+    .stats{
+        display: flex;
+        width: 400px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        padding: 10px 20px;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px;
+
+    }
+
+    .sub-stats p{
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .application h3{
+        font-size: 40px;
+        margin-bottom: 30px;
+    }
+
+    .sub-stats h1{
+        font-size: 50px;
+        margin: 0px;
+    }
+
+    .stats i{
+        font-size: 40px;
+    }
+
+    .bag-i{
+        color: green;
+    }
+
+    .alert-i{
+        color: red;
+    }
+
+    .reject-i{
+        color: blue;
+    }
+
+    .accept-i{
+    color: orange;
+    }
+
+
+    .inline-p{
+        display: inline;
+        margin-right: 20px;
+    }
+
+
+    .application-recent-activity {
+        width: 800px;
+        padding: 20px 30px;
+        box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
+        margin: 0px;
+    }
+
+
+    .activity{
+        display: flex;
+        align-items:center;
+        justify-content: space-between;
+
+    }
+
+    .activity a{
+        font-weight: bold;
+        color: #c82323;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+
+
+/*----------------------------- Application admin ---------------------------*/
+
+.application-card{
+    display:none;
 }

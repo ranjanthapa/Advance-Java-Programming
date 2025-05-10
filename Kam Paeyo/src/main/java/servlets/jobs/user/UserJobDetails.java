@@ -16,9 +16,9 @@ public class UserJobDetails extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Detail endpiont hit.....");
-        System.out.println(req.getParameter("id"));
+
         String jobId = req.getParameter("id");
+
         Job job = UserJobService.getJob(jobId);
         req.setAttribute("job", job);
         req.getRequestDispatcher("/jobdetails.jsp").forward(req, resp);

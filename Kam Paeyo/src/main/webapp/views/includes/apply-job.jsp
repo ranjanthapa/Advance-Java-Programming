@@ -7,13 +7,14 @@
        </div>
         <hr class="divider">
 
-      <form enctype="multipart/form-data">
+      <form enctype="multipart/form-data" action="/KamPaeyo/job/apply" method="post">
 
         <div class="input-container">
           <input type="text" name="name" placeholder=" " required />
           <label for="name">Name</label>
         </div>
 
+          <input type="hidden" name="jobId" value="<%= job.getId() %>" />
         <div class="input-container">
           <input type="email" name="email" placeholder=" " required />
           <label for="email">Email</label>

@@ -39,3 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+
+
+function closeApplyForm() {
+    document.getElementById('jobApplyOverlay').style.display = 'none';
+}
+

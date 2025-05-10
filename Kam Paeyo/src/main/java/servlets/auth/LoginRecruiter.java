@@ -21,7 +21,6 @@ public class LoginRecruiter extends HttpServlet {
         String password = req.getParameter("password");
 
         String userId = RecruiterService.login(email, password);
-        System.out.println("The loguin user................."+ userId);
         if (userId != null) {
             req.getSession().setAttribute("role", "recruiter");
             req.getSession().setAttribute("userId", userId);

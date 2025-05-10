@@ -1,10 +1,14 @@
 package services.user;
 
 import config.DbConnection;
+import dto.Applications;
 import dto.Job;
 import enums.JobStatus;
+import queries.ApplicationQuery;
 import queries.admin.JobQuery;
+import queries.admin.RecruiterQuery;
 import queries.users.UserLevelJobQuery;
+import utils.DbUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -80,6 +84,28 @@ public class UserJobService {
         }
 
         return job;
+    }
+
+
+    public static boolean applyJob(Applications application) {
+        try (Connection connection = DbConnection.getConnection()) {
+            PreparedStatement stmt = connection.prepareStatement(ApplicationQuery.APPLY_JOB);
+            stmt.setString(1, application.getId());
+            stmt.setString(2, application.getName());
+            stmt.setString(3, application.getEmail());
+            stmt.setString(4, application.getContactNumber());
+            stmt.setString(5, application.getResumePath());
+            stmt.setString(6, application.getCoverLetter());
+            stmt.setString(7, application.getJobId());
+            stmt.setString(8, application.getApplicant_id());
+
+            int rowsInserted = stmt.executeUpdate();
+            return rowsInserted > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 }

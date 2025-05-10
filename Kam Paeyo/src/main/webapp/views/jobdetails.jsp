@@ -80,6 +80,7 @@
                 <p class="custom-label">Last Apply Date:</p>
                 <span><%= job.getFormattedDeadline() %></span>
             </div>
+
             <div class="overview-row details-overview-row">
                 <p class="custom-label">Closed Date:</p>
                 <span><%= job.getFormattedDeadline() %></span>
@@ -90,14 +91,62 @@
             </div>
         </div>
 
-        <div class="apply-btn-container" onclick="openApplyForm()">
-            <button class="apply-btn"><i class="fa-solid fa-paper-plane"></i> Apply Now</button>
-        </div>
+        <% if ("EXPIRED".equalsIgnoreCase(job.getStatus().toString())) { %>
+            <div class="apply-btn-container">
+                <button class="apply-btn expired" disabled>
+                    <i class="fa-solid fa-ban"></i> Expired
+                </button>
+            </div>
+        <% } else { %>
+            <div class="apply-btn-container" onclick="openApplyForm()">
+                <button class="apply-btn">
+                    <i class="fa-solid fa-paper-plane"></i> Apply Now
+                </button>
+            </div>
+        <% } %>
+
+
     </div>
 
 <%@ include file="includes/apply-job.jsp" %>
 
+    <div id="customToast" class="customToast">
+    </div>
+
+
 </section>
+
+
+<script>
+    function showToast(message, color) {
+        const toast = document.getElementById("customToast");
+        toast.innerText = message;
+        toast.style.background = color;
+        toast.classList.add("show");
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2000);
+    }
+
+    <%
+        Boolean applyStatus = (Boolean) session.getAttribute("applyStatus");
+        if (applyStatus != null && applyStatus) {
+            session.removeAttribute("applyStatus");
+    %>
+        showToast("Apply successfully!", "green");
+    <% } %>
+
+    <%
+        Boolean isLoginRequired = (Boolean) session.getAttribute("loginRequired");
+        if (isLoginRequired != null && isLoginRequired) {
+            session.removeAttribute("loginRequired");
+    %>
+        showToast("Login required!", "red");
+    <%
+        }
+    %>
+
+</script>
 <script src="<%= request.getContextPath() %>/scripts/index.js"></script>
 
 </body>

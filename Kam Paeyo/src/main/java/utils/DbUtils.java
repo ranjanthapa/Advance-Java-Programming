@@ -11,9 +11,8 @@ public class DbUtils {
         try (PreparedStatement stmt = conn.prepareStatement(GeneralQuery.TABLE_EXISTS)) {
             stmt.setString(1, tableName);
             try (ResultSet result = stmt.executeQuery()) {
-                System.out.println("Checking table exists in the db utils" + result);
-                System.out.println(result.next());
                 boolean isExist = result.next();
+                System.out.println("IsExists" + isExist);
                 return isExist;
             }
         } catch (SQLException e) {

@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.UUID;
 
 public class Job {
-    private String id;
+    private final String id;
     private String userId;
     private String title;
     private String company;

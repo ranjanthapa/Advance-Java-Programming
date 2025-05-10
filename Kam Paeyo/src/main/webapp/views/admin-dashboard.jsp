@@ -122,7 +122,6 @@ AvailableJobsServlet.java
 
           function openDeleteModal(jobId) {
               selectedJobId = jobId;
-              console.log("Selected job ID to delete:", selectedJobId);
               document.getElementById("modal-overlay").style.display = "flex";
           }
 
