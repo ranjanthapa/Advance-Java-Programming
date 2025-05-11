@@ -1,12 +1,23 @@
+
+<%@ page import="java.util.Set" %>
+<%@ page import="java.util.HashSet" %>
 <div class="filter-container">
-    <form method="post" action="<%= request.getContextPath() %>/admin/filter-job" class="form-group-h">
+    <form method="post" action="<%= request.getContextPath() %>/admin/filter-application" class="form-group-h">
 
         <select name="company">
-            <option value="">Filter by Company</option>
-            <option value="CreativeMakura">CreativeMakura</option>
-            <option value="NexusBytes">NexusBytes</option>
-            <option value="TechSansar">TechSansar</option>
-        </select>
+                    <option value="">Filter by Company</option>
+                    <%
+                        // Get the companies from the request
+                        Set<String> companies = (Set<String>) request.getAttribute("companies");
+                        if (companies != null) {
+                            for (String company : companies) {
+                    %>
+                        <option value="<%= company %>"><%= company %></option>
+                    <%
+                            }
+                        }
+                    %>
+                </select>
 
         <select name="type">
             <option value="">Filter by Type</option>
@@ -16,19 +27,25 @@
         </select>
 
         <select name="location">
-            <option value="">Filter by Location</option>
-            <option value="Kathmandu">Kathmandu</option>
-            <option value="Pokhara">Pokhara</option>
-            <option value="Butwal">Butwal</option>
-        </select>
+                    <option value="">Filter by Location</option>
+                    <%
+                        // Get the locations from the request
+                        Set<String> locations = (Set<String>) request.getAttribute("locations");
+                        if (locations != null) {
+                            for (String location : locations) {
+                    %>
+                        <option value="<%= location %>"><%= location %></option>
+                    <%
+                            }
+                        }
+                    %>
+                </select>
 
         <select name="status">
             <option value="">Filter by Status</option>
-            <option value="ACTIVE">ACCEPTED</option>
-            <option value="EXPIRED">PENDING</option>
-            <option value="EXPIRED">REJECTED</option>
-
-
+            <option value="accepted">ACCEPTED</option>
+            <option value="pending">PENDING</option>
+            <option value="rejected">REJECTED</option>
         </select>
 
         <button type="submit">Apply</button>

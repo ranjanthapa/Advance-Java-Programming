@@ -11,21 +11,22 @@
         </div>
         <hr class="divider">
 
-        <form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/app" method="post">
+       <form action="${pageContext.request.contextPath}/admin/application" method="post">
+
             <div class="input-container">
-                <input type="text" id="applicant-name" name="name" placeholder=" " value="" disabled />
+                <input type="text" id="applicant-name" name="name" placeholder=" " disabled />
                 <label for="applicant-name">Name</label>
             </div>
 
-            <input type="text" id="app-id" name="app_id" placeholder=" " value="" hidden/>
+            <input type="text" id="app-id" name="app_id" placeholder=" "  hidden/>
 
             <div class="input-container">
-                <input type="email" id="applicant-email" name="email" placeholder=" " value="" disabled />
+                <input type="email" id="applicant-email" name="email" placeholder=" "  disabled/>
                 <label for="applicant-email">Email</label>
             </div>
 
             <div class="input-container">
-                <input type="tel" id="applicant-contact" name="contact" placeholder=" " value="" disabled />
+                <input type="tel" id="applicant-contact" name="contact" placeholder=" "  disabled  />
                 <label for="applicant-contact">Contact Number</label>
             </div>
 

@@ -60,9 +60,17 @@
                     <td class="<%= statusClass %>"><%= appStatus %></td>
                     <td>
                         <div class="action-buttons">
-                            <button onclick="viewApplication('<%= app.get("applicationId") %>')">
+                            <button onclick="viewApplication(this)"
+                                data-id="<%= app.get("applicationId") %>"
+                                data-name="<%= app.get("name") %>"
+                                data-email="<%= app.get("email") %>"
+                                data-contact="<%= app.get("contact_number") %>"
+                                data-cover="<%= app.get("cover_letter") %>"
+                                data-resume="<%= app.get("resume_path") %>"
+                                data-status="<%= app.get("application_status") %>">
                                 View
                             </button>
+
 
 
                         </div>
@@ -88,7 +96,29 @@
         Job posted successfully!
     </div>
   </div>
+   <div id="customToast" class="customToast">
+          Job deleted successfully!
+      </div>
 </body>
+<script>
+    function showToast(message) {
+        const toast = document.getElementById("customToast");
+        toast.innerText = message;
+        toast.classList.add("show");
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2000);
+    }
+
+    <%
+        Boolean applicationUpdateStatus = (Boolean) session.getAttribute("applicationUpdateStatus");
+        if (applicationUpdateStatus != null && applicationUpdateStatus) {
+            session.removeAttribute("applicationUpdateStatus");
+    %>
+        showToast("Application updated successfully!");
+    <% } %>
+</script>
+
 
 
 <script src="<%= request.getContextPath() %>/scripts/index.js"></script>

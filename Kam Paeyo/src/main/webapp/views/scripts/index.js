@@ -42,6 +42,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+function viewApplication(button) {
+    document.getElementById("jobApplyOverlay").style.display = "flex";
+    const BASE_URL = 'KamPaeyo/'
+
+    const name = button.dataset.name;
+    const email = button.dataset.email;
+    const contact = button.dataset.contact;
+    const cover = button.dataset.cover;
+   const resume = `${BASE_URL}${button.dataset.resume}`;
+    const status = button.dataset.status;
+    const id = button.dataset.id;
+
+    document.getElementById("applicant-name").value = name;
+    document.getElementById("applicant-email").value = email;
+    document.getElementById("applicant-contact").value = contact;
+    document.getElementById("applicant-cover-letter").value = cover;
+
+    document.getElementById("resumeLink").href = `/${resume}`;
+    document.getElementById("app-id").value = id;
+
+    document.getElementById("appStatus").value = status;
+}
+
+function closeApplyForm() {
+    document.getElementById("jobApplyOverlay").style.display = "none";
+}
+
+
 function closeApplyForm() {
     document.getElementById('jobApplyOverlay').style.display = 'none';
 }

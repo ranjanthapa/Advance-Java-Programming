@@ -47,12 +47,28 @@ public class ApplicationQuery {
             "    JOIN recruiters ON recruiters.id = jobs.recruiter_id\n" +
             "    WHERE recruiters.id = ?" +
             ")\n" +
-            "SELECT applications.*, temptable.title, temptable.created_at\n" +
+            "SELECT applications.*, temptable.title, temptable.created_at,  temptable.company, temptable.type," +
+            "temptable.location\n" +
             "FROM applications\n" +
-            "JOIN temptable ON applications.job_id = temptable.id";
+            "JOIN temptable ON applications.job_id = temptable.id ORDER BY \n" +
+            "    CASE LOWER(applications.status)\n" +
+            "        WHEN 'pending' THEN 1\n" +
+            "        WHEN 'accepted' THEN 2\n" +
+            "        WHEN 'rejected' THEN 3\n" +
+            "        ELSE 4\n" +
+            "    END";
 
 
     public static final String UPDATE_APPLICATION_STATUS = "UPDATE applications SET status = ? WHERE id = ?";
 
     public static final String GET_APPLICATION = "SELECT * FROM applications where id=?";
+
+    public static final String ADMIN_APPLICATION_FILTER ="WITH temp AS (" +
+            "  SELECT jobs.* FROM jobs " +
+            "  JOIN recruiters ON recruiters.id = jobs.recruiter_id " +
+            "  WHERE recruiters.id = ?" +
+            ") " +
+            "SELECT applications.*, temp.title, temp.created_at, temp.company, temp.type, temp.location " +
+            "FROM applications JOIN temp ON applications.job_id = temp.id ";
+
 }
